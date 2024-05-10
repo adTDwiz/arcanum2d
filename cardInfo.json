@@ -1,0 +1,133 @@
+{
+    "decks": [
+        {
+            "name": "Rider-Waite",
+            "cards": [
+                {
+                    "name": "The Magician",
+                    "arcana": "Major",
+                    "number": 1,
+                    "period": "Victorian",
+                    "description": "",
+                    "index": 101,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    }
+
+                },
+                {
+                    "name": "The Fool",
+                    "arcana": "Major",
+                    "number": 0,
+                    "period": "Victorian",
+                    "description": "",
+                    "index": 100,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    }
+                },
+                {
+                    "name": "The High Priestess",
+                    "arcana": "Major",
+                    "number": 2,
+                    "period": "Victorian",
+                    "description": "",
+                    "index": 102,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    }
+                },
+                {
+                    "name": "The Hierophant",
+                    "arcana": "Major",
+                    "number": 5,
+                    "period": "Victorian",
+                    "description": "",
+                    "index": 105,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    }
+                },
+                {
+                    "name": "The Empress",
+                    "arcana": "Major",
+                    "number": 3,
+                    "period": "Victorian",
+                    "description": "",
+                    "index": 103,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    }
+                },
+                {
+                    "name": "The Emperor",
+                    "arcana": "Major",
+                    "number": 4,
+                    "period": "Victorian",
+                    "description": "",
+                    "index": 104,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Thoth",
+            "cards": [
+                {
+                    "name": "The Magus",
+                    "arcana": "Major",
+                    "number": 1,
+                    "period": "Modern",
+                    "description": "",
+                    "index": 201,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    },
+                    "Hebrew": "Beth",
+                    "Symbol": "Mercury"
+                },
+                {
+                    "name": "The Fool",
+                    "arcana": "Major",
+                    "number": 0,
+                    "period": "Modern",
+                    "description": "",
+                    "index": 200,
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    },
+                    "Hebrew": "Aleph",
+                    "Symbol": "Air"
+                }
+            ]
+        }
+    ],
+    "gameModes": [
+        {
+            "name": "CelticCross",
+            "index": "0",
+            "description": "A traditional 1-over-1 spread."
+        },
+        {
+            "name": "TreeOfLifeSix",
+            "index": "1",
+            "description": "Six card tree of life spread."
+        },
+        {
+            "name": "TreeOfLifeEleven",
+            "index": "2",
+            "description": "Eleven card tree of life spread."
+        }
+    ]
+}
+
