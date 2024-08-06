@@ -38,7 +38,7 @@ enum class GameModeState {
 //This will keep track of what game state we are in. It should be global.
 GameModeState currentGameState = GameModeState::Start_Menu;
 
-//This updates our game state
+//This updates our game state. Called whenever screens change
 void updateGameState(GameModeState newState) {
     currentGameState = newState;
 }
@@ -126,9 +126,9 @@ public:
     std::string reversedMeaning;
     std::string hebrew; // Optional
     std::string symbol; // Optional
-    std::string element; // New field for elemental association
+    std::string element; // Optional
 
-    // Constructor with element parameter
+    // Constructor with various parameters
     Card(const std::string& name, const std::string& arcana, int number, const std::string& period,
         const std::string& description, int index, const std::string& uprightMeaning,
         const std::string& reversedMeaning, const std::string& element = "",
@@ -138,7 +138,7 @@ public:
         hebrew(hebrew), symbol(symbol), element(element) {
     }
 
-    // Method to display card information including element
+    // This is a method to display card information including element
     void display() const {
         std::cout << "Name: " << name << "\nArcana: " << arcana << "\nNumber: " << number << "\nPeriod: " << period << "\nDescription: " << description << "\nIndex: " << index << "\nUpright Meaning: " << uprightMeaning << "\nReversed Meaning: " << reversedMeaning;
         if (!element.empty()) {
@@ -537,16 +537,16 @@ int playMode(const json& retrievedCardData) {
         double weight = graph.getEdgeWeight(&selectedCards[i], &selectedCards[i + 1]);
 
         if (std::find(elementCompatibility[element1].begin(), elementCompatibility[element1].end(), element2) != elementCompatibility[element1].end()) {
-            weight *= 0.9; // Reduce weight for compatible elements
+            weight *= 0.9; // Reduces weight for compatible elements
         }
         else {
-            weight *= 1.1; // Increase weight for incompatible elements
+            weight *= 1.1; // Increases weight for incompatible elements
         }
 
         graph.updateEdgeWeight(&selectedCards[i], &selectedCards[i + 1], weight);
     }
 
-    // Apply lunar and solar modifiers (example logic)
+    // Apply lunar and solar modifiers
     double lunarModifier = (moonPhase == "Full Moon") ? 0.8 : 1.2;
     double solarModifier = (solarSign == "Aries") ? 0.85 : 1.15;
 
@@ -566,13 +566,13 @@ int playMode(const json& retrievedCardData) {
 
 //this is the setup function
 bool initSDL(SDL_Window*& window, SDL_Renderer*& renderer, int screenWidth, int screenHeight) {
-    // Initialize SDL
+    // Here we will initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
         return false;
     }
 
-    // Create window
+    // Creating a window
     window = SDL_CreateWindow("SDL2 Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
         std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
@@ -668,7 +668,7 @@ void renderHoverBoxWithText(SDL_Renderer* renderer, int mouseX, int mouseY, int 
     SDL_RenderFillRect(renderer, &shadowBox);
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
 
-    // Render main hover box
+    // Render main hover box. This also creates the gradient
     if (ifGradient) {
         for (int i = 0; i < hoverBox.w; ++i) {
             float t = (float)i / (hoverBox.w - 1); // Calculate interpolation factor
