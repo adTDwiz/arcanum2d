@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui\backends;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\lib\x64;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_ttf-SDL2\external\freetype\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_ttf-SDL2;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui\backends;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Arjme\OneDrive\Desktop\VSTools\SDL2_ttf-2.22.0\lib\x64;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\lib\x64;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui\backends;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\lib\x64;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_ttf-SDL2\external\freetype\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_ttf-SDL2;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui\backends;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\imgui;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Arjme\OneDrive\Desktop\VSTools\SDL2_ttf-2.22.0\lib\x64;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\lib\x64;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -84,12 +84,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\nlohmann\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Arjme\OneDrive\Desktop\VSTools\SDL2_ttf-2.22.0\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\nlohmann\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -115,12 +116,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\nlohmann\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Arjme\OneDrive\Desktop\VSTools\SDL2_ttf-2.22.0\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL\include;C:\Users\Arjme\OneDrive\Desktop\cTarot\include\nlohmann\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Users\Arjme\OneDrive\Desktop\cTarot\include\SDL_image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -142,6 +144,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cTarot.cpp" />
+    <ClCompile Include="EventHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="EventHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

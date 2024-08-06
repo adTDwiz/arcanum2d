@@ -1,0 +1,515 @@
+{
+    "2024": {
+        "events": [
+            {
+                "date": "2024-01-01",
+                "phase": "Full Moon",
+                "time": "00:01 am"
+            },
+            {
+                "date": "2024-01-03",
+                "phase": "Third Quarter",
+                "time": "9:30 pm"
+            },
+            {
+                "date": "2024-01-11",
+                "phase": "New Moon",
+                "time": "5:57 am"
+            },
+            {
+                "date": "2024-01-17",
+                "phase": "First Quarter",
+                "time": "9:52 pm"
+            },
+            {
+                "date": "2024-01-25",
+                "phase": "Full Moon",
+                "time": "11:54 am"
+            },
+            {
+                "date": "2024-02-02",
+                "phase": "Third Quarter",
+                "time": "5:18 pm"
+            },
+            {
+                "date": "2024-02-09",
+                "phase": "New Moon",
+                "time": "4:59 pm"
+            },
+            {
+                "date": "2024-02-16",
+                "phase": "First Quarter",
+                "time": "9:00 am"
+            },
+            {
+                "date": "2024-02-24",
+                "phase": "Full Moon",
+                "time": "6:30 am"
+            },
+            {
+                "date": "2024-03-03",
+                "phase": "Third Quarter",
+                "time": "9:23 am"
+            },
+            {
+                "date": "2024-03-10",
+                "phase": "New Moon",
+                "time": "4:00 am"
+            },
+            {
+                "date": "2024-03-16",
+                "phase": "First Quarter",
+                "time": "11:10 pm"
+            },
+            {
+                "date": "2024-03-25",
+                "phase": "Full Moon",
+                "time": "2:00 am"
+            },
+            {
+                "date": "2024-04-01",
+                "phase": "Third Quarter",
+                "time": "10:14 pm"
+            },
+            {
+                "date": "2024-04-08",
+                "phase": "New Moon",
+                "time": "1:20 pm"
+            },
+            {
+                "date": "2024-04-15",
+                "phase": "First Quarter",
+                "time": "2:13 pm"
+            },
+            {
+                "date": "2024-04-23",
+                "phase": "Full Moon",
+                "time": "6:48 pm"
+            },
+            {
+                "date": "2024-05-01",
+                "phase": "Third Quarter",
+                "time": "6:27 am"
+            },
+            {
+                "date": "2024-05-07",
+                "phase": "New Moon",
+                "time": "10:21 pm"
+            },
+            {
+                "date": "2024-05-15",
+                "phase": "First Quarter",
+                "time": "6:48 am"
+            },
+            {
+                "date": "2024-05-23",
+                "phase": "Full Moon",
+                "time": "8:53 am"
+            },
+            {
+                "date": "2024-05-30",
+                "phase": "Third Quarter",
+                "time": "12:12 pm"
+            },
+            {
+                "date": "2024-06-06",
+                "phase": "New Moon",
+                "time": "7:37 am"
+            },
+            {
+                "date": "2024-06-14",
+                "phase": "First Quarter",
+                "time": "12:18 am"
+            },
+            {
+                "date": "2024-06-21",
+                "phase": "Full Moon",
+                "time": "8:07 pm"
+            },
+            {
+                "date": "2024-06-28",
+                "phase": "Third Quarter",
+                "time": "4:53 pm"
+            },
+            {
+                "date": "2024-07-05",
+                "phase": "New Moon",
+                "time": "5:57 pm"
+            },
+            {
+                "date": "2024-07-13",
+                "phase": "First Quarter",
+                "time": "5:48 pm"
+            },
+            {
+                "date": "2024-07-21",
+                "phase": "Full Moon",
+                "time": "5:17 am"
+            },
+            {
+                "date": "2024-07-27",
+                "phase": "Third Quarter",
+                "time": "9:51 pm"
+            },
+            {
+                "date": "2024-08-04",
+                "phase": "New Moon",
+                "time": "6:13 am"
+            },
+            {
+                "date": "2024-08-12",
+                "phase": "First Quarter",
+                "time": "10:18 am"
+            },
+            {
+                "date": "2024-08-19",
+                "phase": "Full Moon",
+                "time": "1:25 pm"
+            },
+            {
+                "date": "2024-08-26",
+                "phase": "Third Quarter",
+                "time": "4:25 am"
+            },
+            {
+                "date": "2024-09-02",
+                "phase": "New Moon",
+                "time": "8:55 pm"
+            },
+            {
+                "date": "2024-09-11",
+                "phase": "First Quarter",
+                "time": "1:05 am"
+            },
+            {
+                "date": "2024-09-17",
+                "phase": "Full Moon",
+                "time": "9:34 pm"
+            },
+            {
+                "date": "2024-09-24",
+                "phase": "Third Quarter",
+                "time": "1:49 pm"
+            },
+            {
+                "date": "2024-10-02",
+                "phase": "New Moon",
+                "time": "1:49 pm"
+            },
+            {
+                "date": "2024-10-10",
+                "phase": "First Quarter",
+                "time": "1:55 pm"
+            },
+            {
+                "date": "2024-10-17",
+                "phase": "Full Moon",
+                "time": "6:26 am"
+            },
+            {
+                "date": "2024-10-24",
+                "phase": "Third Quarter",
+                "time": "3:03 am"
+            },
+            {
+                "date": "2024-11-01",
+                "phase": "New Moon",
+                "time": "7:47 am"
+            },
+            {
+                "date": "2024-11-08",
+                "phase": "First Quarter",
+                "time": "11:55 pm"
+            },
+            {
+                "date": "2024-11-15",
+                "phase": "Full Moon",
+                "time": "3:28 pm"
+            },
+            {
+                "date": "2024-11-22",
+                "phase": "Third Quarter",
+                "time": "7:27 pm"
+            },
+            {
+                "date": "2024-12-01",
+                "phase": "New Moon",
+                "time": "12:21 am"
+            },
+            {
+                "date": "2024-12-08",
+                "phase": "First Quarter",
+                "time": "9:26 am"
+            },
+            {
+                "date": "2024-12-15",
+                "phase": "Full Moon",
+                "time": "3:01 am"
+            },
+            {
+                "date": "2024-12-22",
+                "phase": "Third Quarter",
+                "time": "4:18 pm"
+            },
+            {
+                "date": "2024-12-30",
+                "phase": "New Moon",
+                "time": "4:26 pm"
+            }
+        ]
+    },
+    "2025": {
+        "events": [
+            {
+                "date": "2025-01-01",
+                "phase": "New Moon",
+                "time": "00:01 am"
+            },
+            {
+                "date": "2025-01-06",
+                "phase": "First Quarter",
+                "time": "5:56 pm"
+            },
+            {
+                "date": "2025-01-13",
+                "phase": "Full Moon",
+                "time": "4:26 pm"
+            },
+            {
+                "date": "2025-01-21",
+                "phase": "Third Quarter",
+                "time": "2:30 pm"
+            },
+            {
+                "date": "2025-01-29",
+                "phase": "New Moon",
+                "time": "6:35 am"
+            },
+            {
+                "date": "2025-02-05",
+                "phase": "First Quarter",
+                "time": "2:02 am"
+            },
+            {
+                "date": "2025-02-12",
+                "phase": "Full Moon",
+                "time": "7:53 am"
+            },
+            {
+                "date": "2025-02-20",
+                "phase": "Third Quarter",
+                "time": "11:32 am"
+            },
+            {
+                "date": "2025-02-27",
+                "phase": "New Moon",
+                "time": "6:44 pm"
+            },
+            {
+                "date": "2025-03-06",
+                "phase": "First Quarter",
+                "time": "10:31 am"
+            },
+            {
+                "date": "2025-03-14",
+                "phase": "Full Moon",
+                "time": "1:54 am"
+            },
+            {
+                "date": "2025-03-22",
+                "phase": "Third Quarter",
+                "time": "6:29 am"
+            },
+            {
+                "date": "2025-03-29",
+                "phase": "New Moon",
+                "time": "5:57 am"
+            },
+            {
+                "date": "2025-04-04",
+                "phase": "First Quarter",
+                "time": "9:14 pm"
+            },
+            {
+                "date": "2025-04-12",
+                "phase": "Full Moon",
+                "time": "7:22 pm"
+            },
+            {
+                "date": "2025-04-20",
+                "phase": "Third Quarter",
+                "time": "8:35 pm"
+            },
+            {
+                "date": "2025-04-27",
+                "phase": "New Moon",
+                "time": "2:31 pm"
+            },
+            {
+                "date": "2025-05-04",
+                "phase": "First Quarter",
+                "time": "8:51 am"
+            },
+            {
+                "date": "2025-05-12",
+                "phase": "Full Moon",
+                "time": "11:55 am"
+            },
+            {
+                "date": "2025-05-20",
+                "phase": "Third Quarter",
+                "time": "6:58 am"
+            },
+            {
+                "date": "2025-05-26",
+                "phase": "New Moon",
+                "time": "10:02 pm"
+            },
+            {
+                "date": "2025-06-02",
+                "phase": "First Quarter",
+                "time": "10:40 pm"
+            },
+            {
+                "date": "2025-06-11",
+                "phase": "Full Moon",
+                "time": "2:43 am"
+            },
+            {
+                "date": "2025-06-18",
+                "phase": "Third Quarter",
+                "time": "2:19 pm"
+            },
+            {
+                "date": "2025-06-25",
+                "phase": "New Moon",
+                "time": "5:31 am"
+            },
+            {
+                "date": "2025-07-02",
+                "phase": "First Quarter",
+                "time": "2:30 pm"
+            },
+            {
+                "date": "2025-07-10",
+                "phase": "Full Moon",
+                "time": "3:36 pm"
+            },
+            {
+                "date": "2025-07-17",
+                "phase": "Third Quarter",
+                "time": "7:37 pm"
+            },
+            {
+                "date": "2025-07-24",
+                "phase": "New Moon",
+                "time": "2:11 pm"
+            },
+            {
+                "date": "2025-08-01",
+                "phase": "First Quarter",
+                "time": "7:41 am"
+            },
+            {
+                "date": "2025-08-09",
+                "phase": "Full Moon",
+                "time": "2:55 am"
+            },
+            {
+                "date": "2025-08-16",
+                "phase": "Third Quarter",
+                "time": "12:12 am"
+            },
+            {
+                "date": "2025-08-23",
+                "phase": "New Moon",
+                "time": "1:06 am"
+            },
+            {
+                "date": "2025-08-31",
+                "phase": "First Quarter",
+                "time": "1:25 am"
+            },
+            {
+                "date": "2025-09-07",
+                "phase": "Full Moon",
+                "time": "1:08 pm"
+            },
+            {
+                "date": "2025-09-14",
+                "phase": "Third Quarter",
+                "time": "5:32 am"
+            },
+            {
+                "date": "2025-09-21",
+                "phase": "New Moon",
+                "time": "2:54 pm"
+            },
+            {
+                "date": "2025-09-29",
+                "phase": "First Quarter",
+                "time": "6:53 pm"
+            },
+            {
+                "date": "2025-10-06",
+                "phase": "Full Moon",
+                "time": "10:47 pm"
+            },
+            {
+                "date": "2025-10-13",
+                "phase": "Third Quarter",
+                "time": "1:12 pm"
+            },
+            {
+                "date": "2025-10-21",
+                "phase": "New Moon",
+                "time": "7:25 am"
+            },
+            {
+                "date": "2025-10-29",
+                "phase": "First Quarter",
+                "time": "11:20 am"
+            },
+            {
+                "date": "2025-11-05",
+                "phase": "Full Moon",
+                "time": "7:19 am"
+            },
+            {
+                "date": "2025-11-11",
+                "phase": "Third Quarter",
+                "time": "11:28 pm"
+            },
+            {
+                "date": "2025-11-20",
+                "phase": "New Moon",
+                "time": "12:47 am"
+            },
+            {
+                "date": "2025-11-28",
+                "phase": "First Quarter",
+                "time": "12:58 am"
+            },
+            {
+                "date": "2025-12-04",
+                "phase": "Full Moon",
+                "time": "5:14 pm"
+            },
+            {
+                "date": "2025-12-11",
+                "phase": "Third Quarter",
+                "time": "2:51 pm"
+            },
+            {
+                "date": "2025-12-19",
+                "phase": "New Moon",
+                "time": "7:43 pm"
+            },
+            {
+                "date": "2025-12-27",
+                "phase": "First Quarter",
+                "time": "1:09 pm"
+            }
+        ]
+    }
+}

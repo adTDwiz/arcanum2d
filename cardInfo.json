@@ -2,6 +2,9 @@
     "decks": [
         {
             "name": "Rider-Waite",
+            "description": "A widely known traditional tarot deck.",
+            "era": "Victorian",
+            "difficulty": "Intermediate",
             "cards": [
                 {
                     "name": "The Magician",
@@ -10,11 +13,11 @@
                     "period": "Victorian",
                     "description": "",
                     "index": 101,
+                    "element": "Air",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
                     }
-
                 },
                 {
                     "name": "The Fool",
@@ -23,6 +26,7 @@
                     "period": "Victorian",
                     "description": "",
                     "index": 100,
+                    "element": "Air",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
@@ -35,6 +39,7 @@
                     "period": "Victorian",
                     "description": "",
                     "index": 102,
+                    "element": "Water",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
@@ -47,6 +52,7 @@
                     "period": "Victorian",
                     "description": "",
                     "index": 105,
+                    "element": "Earth",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
@@ -59,6 +65,7 @@
                     "period": "Victorian",
                     "description": "",
                     "index": 103,
+                    "element": "Earth",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
@@ -71,6 +78,7 @@
                     "period": "Victorian",
                     "description": "",
                     "index": 104,
+                    "element": "Fire",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
@@ -79,8 +87,26 @@
             ]
         },
         {
-            "name": "Thoth",
+            "name": "Set",
+            "description": "A complex and modern deck, known for its esoteric symbolism.",
+            "era": "Modern",
+            "difficulty": "Advanced",
             "cards": [
+                {
+                    "name": "The Fool",
+                    "arcana": "Major",
+                    "number": 0,
+                    "period": "Modern",
+                    "description": "",
+                    "index": 200,
+                    "element": "Air",
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    },
+                    "Hebrew": "Aleph",
+                    "Symbol": "Air"
+                },
                 {
                     "name": "The Magus",
                     "arcana": "Major",
@@ -88,6 +114,7 @@
                     "period": "Modern",
                     "description": "",
                     "index": 201,
+                    "element": "Air",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
@@ -96,18 +123,49 @@
                     "Symbol": "Mercury"
                 },
                 {
-                    "name": "The Fool",
+                    "name": "The Priestess",
                     "arcana": "Major",
-                    "number": 0,
+                    "number": 2,
                     "period": "Modern",
                     "description": "",
-                    "index": 200,
+                    "index": 202,
+                    "element": "Water",
                     "meanings": {
                         "upright": "",
                         "reversed": ""
                     },
-                    "Hebrew": "Aleph",
-                    "Symbol": "Air"
+                    "Hebrew": "Gimel",
+                    "Symbol": "Moon"
+                },
+                {
+                    "name": "The Priest",
+                    "arcana": "Major",
+                    "number": 3,
+                    "period": "Modern",
+                    "description": "",
+                    "index": 203,
+                    "element": "Earth",
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    },
+                    "Hebrew": "Vau",
+                    "Symbol": "Taurus"
+                },
+                {
+                    "name": "The Emperor",
+                    "arcana": "Major",
+                    "number": 4,
+                    "period": "Modern",
+                    "description": "",
+                    "index": 204,
+                    "element": "Fire",
+                    "meanings": {
+                        "upright": "",
+                        "reversed": ""
+                    },
+                    "Hebrew": "Tzaddi",
+                    "Symbol": "Aries"
                 }
             ]
         }
@@ -115,19 +173,18 @@
     "gameModes": [
         {
             "name": "CelticCross",
-            "index": "0",
-            "description": "A traditional 1-over-1 spread."
+            "description": "A traditional 1-over-1 spread.",
+            "noOfCards": "2"
         },
         {
             "name": "TreeOfLifeSix",
-            "index": "1",
-            "description": "Six card tree of life spread."
+            "description": "Six card tree of life spread.",
+            "noOfCards": "6"
         },
         {
             "name": "TreeOfLifeEleven",
-            "index": "2",
-            "description": "Eleven card tree of life spread."
+            "description": "Eleven card tree of life spread.",
+            "noOfCards": "11"
         }
     ]
 }
-
