@@ -21,6 +21,7 @@
 #include <SDL_ttf.h>
 
 #include "EventHandler.h"
+#include "GUIBox.h"
 
 
 using json = nlohmann::json;
@@ -574,7 +575,7 @@ bool initSDL(SDL_Window*& window, SDL_Renderer*& renderer, int screenWidth, int 
     }
 
     // Creating a window
-    window = SDL_CreateWindow("SDL2 Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Arcana Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
         std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         return false;
@@ -725,10 +726,12 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
     SDL_Event e;
 
     // Main menu buttons
-    SDL_Rect area1 = { screenWidth / 20, screenHeight / 6, screenWidth / 4, screenHeight / 4 };
-    SDL_Rect area2 = { screenWidth / 20, screenHeight / 2.5, screenWidth / 4, screenHeight / 4 };
-    SDL_Rect area3 = { screenWidth / 20, screenHeight / 1.7, screenWidth / 4, screenHeight / 4 };
-    SDL_Rect area4 = { 3 * screenWidth / 4, 3 * screenHeight / 4, screenWidth / 4, screenHeight / 4 };
+    SDL_Rect area1 = { screenWidth / 20, screenHeight / 6, screenWidth / 4, screenHeight / 4 }; // play
+    SDL_Rect area2 = { screenWidth / 20, screenHeight / 2.5, screenWidth / 4, screenHeight / 4 }; // study
+    SDL_Rect area3 = { screenWidth / 20, screenHeight / 1.7, screenWidth / 4, screenHeight / 4 }; //quit
+    SDL_Rect area4 = { 3 * screenWidth / 4, 3 * screenHeight / 4, screenWidth / 4, screenHeight / 4 }; //settings
+
+
 
     //This is a pointer to the returned SDF_Texture of our font loading function. It will be universal as the function itself can render any font we want.
     //What this does is create an SDL surface, convert that to a texture, and fetch the texture so we can render it in the window according to the coordinates of the rect
@@ -924,6 +927,17 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
             case GameModeState::Setting_Menu: {
                 // Render the background texture
                 SDL_RenderCopy(renderer, textures["optionMenuBG"], nullptr, nullptr);
+
+                //the frame for stats
+                SDL_Rect frameUI = { (screenWidth - 1456) / 2, (screenHeight - 816) / 2, 1456, 816 };
+
+
+                SDL_RenderCopy(renderer, textures["settingsFrameUI"], nullptr, &frameUI);
+
+                // Test
+                GUIBox box(renderer, 100, 100, 200, 150, {255, 0, 0, 0}, 1.0f, ElementType::SOLID_SHAPE);
+                box.render();
+
                 break;
             }
         }
@@ -1037,7 +1051,8 @@ int main(int argc, char* argv[]) {
         {"quitButton", "assets/quitButton.png"},
         {"playModeIcon", "assets/playModeIcon.png"},
         {"studyModeIcon", "assets/studyModeIcon.png"},
-        {"settingModeIcon", "assets/settingModeIcon.png"}
+        {"settingModeIcon", "assets/settingModeIcon.png"},
+        {"settingsFrameUI", "assets/settingsFrame.png"}
     };
 
     //Load font links

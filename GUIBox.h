@@ -1,34 +1,49 @@
 // GUIBox.h
-#ifndef GUI_BOX_H
-#define GUI_BOX_H
+
+#ifndef GUIBOX_H
+#define GUIBOX_H
 
 #include <SDL.h>
+#include <string>
+
+// Enum to define the type of content the GUIBox holds
+enum class ElementType {
+    SOLID_SHAPE,
+    GRADIENT_SHAPE,
+    TEXT,
+    IMAGE,
+    BUTTON
+};
 
 class GUIBox {
 public:
-    // Constructor to initialize the GUIBox with position, dimensions, and color
-    GUIBox(int x, int y, int width, int height, SDL_Color color, float elementOpacity);
+    GUIBox(SDL_Renderer* renderer, int x, int y, int width, int height, SDL_Color color, float elementOpacity, ElementType type);
 
-    // Set the position of the GUIBox
     void setPosition(int x, int y);
-
-    // Set the dimensions of the GUIBox
     void setDimensions(int width, int height);
-
-    // Set the color of the GUIBox
     void setColor(SDL_Color color);
-
-    // Set the opacity of the GUIBox
     void setOpacity(float opacity);
-
-    // Render the GUIBox on the screen
-    void render(SDL_Renderer* renderer);
+    void setText(const std::string& text);
+    void setImage(const std::string& imagePath);
+    void render();
 
 private:
-    int x_, y_;
-    int width_, height_;
+    SDL_Renderer* renderer_;  // Store renderer
+    int x_, y_, width_, height_;
     SDL_Color color_;
     float opacity_;
+    ElementType type_;
+
+    // Additional properties for text and image
+    std::string text_;
+    SDL_Texture* imageTexture_;
+
+    // Helper methods for rendering different types
+    void renderSolidShape();
+    void renderGradientShape();
+    void renderText();
+    void renderImage();
+    void renderButton();
 };
 
-#endif // GUI_BOX_H
+#endif // GUIBOX_H
