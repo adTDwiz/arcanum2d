@@ -32,7 +32,8 @@ enum class GameModeState {
     Start_Menu,
     Main_Menu,
     Play_Mode,
-    Study_Mode
+    Study_Mode,
+    Setting_Menu,
 };
 
 //This will keep track of what game state we are in. It should be global.
@@ -727,6 +728,7 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
     SDL_Rect area1 = { screenWidth / 20, screenHeight / 6, screenWidth / 4, screenHeight / 4 };
     SDL_Rect area2 = { screenWidth / 20, screenHeight / 2.5, screenWidth / 4, screenHeight / 4 };
     SDL_Rect area3 = { screenWidth / 20, screenHeight / 1.7, screenWidth / 4, screenHeight / 4 };
+    SDL_Rect area4 = { 3 * screenWidth / 4, 3 * screenHeight / 4, screenWidth / 4, screenHeight / 4 };
 
     //This is a pointer to the returned SDF_Texture of our font loading function. It will be universal as the function itself can render any font we want.
     //What this does is create an SDL surface, convert that to a texture, and fetch the texture so we can render it in the window according to the coordinates of the rect
@@ -783,6 +785,18 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                             std::cout << "Mouse clicked in area 3" << std::endl;
                         }
                     }
+
+                    if (SDL_PointInRect(&mousePoint, &area4)) {
+                        if (e.type == SDL_MOUSEMOTION) {
+                            // Mouse is over area4
+                            //std::cout << "Mouse over area 4" << std::endl;
+                        }
+                        if (e.type == SDL_MOUSEBUTTONDOWN) {
+                            // Mouse clicked in area4
+                            std::cout << "Mouse clicked in area 4" << std::endl;
+                            currentGameState = GameModeState::Setting_Menu;
+                        }
+                    }
                 }
             }
 
@@ -792,6 +806,12 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                     // Change game state to Main_Menu when left mouse button is clicked
                     currentGameState = GameModeState::Main_Menu;
                 }
+            }
+
+            // These are the mouse events in the Settings Menu
+            if (currentGameState == GameModeState::Setting_Menu)
+            {
+                //Mouse Events for settings
             }
         }
 
@@ -840,7 +860,7 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                 SDL_RenderCopy(renderer, textures["quitButton"], nullptr, &area3);
 
                 SDL_Color textColor = { 255, 255, 255 }; // White color
-                SDL_Texture* textTexture = loadTextTexture("Click to start!", fonts["kappa20"], textColor, renderer);
+                SDL_Texture* textTexture = loadTextTexture("Select an option", fonts["kappa20"], textColor, renderer);
                 SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
 
 
@@ -873,6 +893,14 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
 
                 }
 
+                if (SDL_PointInRect(&mousePoint, &area4)) {
+                    // Mouse is over area4
+                    //std::cout << "Mouse over area 4" << std::endl;
+                    SDL_Rect studyIcon = { screenWidth / 2.2, screenHeight / 6, screenWidth / 2.4, screenHeight / 1.5 };
+                    SDL_RenderCopy(renderer, textures["settingModeIcon"], nullptr, &studyIcon);
+                    renderHoverBoxWithText(renderer, mouseX - (screenWidth / 5) - (screenWidth / 70), mouseY - (screenHeight / 14) - (screenHeight / 40), screenWidth / 11, screenHeight / 14, "Settings and records", fonts["kappa20"], 1, { 210, 32, 250, 255 }, { 32, 210, 250, 255 }, textColor);
+                }
+
                 SDL_DestroyTexture(textTexture);
 
                 break;
@@ -891,6 +919,11 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                 // Render the study mode
                 // Add your rendering code for the study mode here
                 // Example: SDL_RenderCopy(renderer, textures["studymodeBG"], nullptr, nullptr);
+                break;
+            }
+            case GameModeState::Setting_Menu: {
+                // Render the background texture
+                SDL_RenderCopy(renderer, textures["optionMenuBG"], nullptr, nullptr);
                 break;
             }
         }
@@ -998,11 +1031,13 @@ int main(int argc, char* argv[]) {
         {"startMenuBG", "assets/startMenu.png"},
         {"titleLogo", "assets/titleLogo.png"},
         {"mainMenuBG", "assets/mainMenu.png"},
+        {"optionMenuBG", "assets/optionMenu.png"},
         {"playButton", "assets/playButton.png"},
         {"studyButton", "assets/studyButton.png"},
         {"quitButton", "assets/quitButton.png"},
         {"playModeIcon", "assets/playModeIcon.png"},
-        {"studyModeIcon", "assets/studyModeIcon.png"}
+        {"studyModeIcon", "assets/studyModeIcon.png"},
+        {"settingModeIcon", "assets/settingModeIcon.png"}
     };
 
     //Load font links

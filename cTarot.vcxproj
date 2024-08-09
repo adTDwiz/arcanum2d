@@ -145,10 +145,12 @@
   <ItemGroup>
     <ClCompile Include="cTarot.cpp" />
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="GUIBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="GUIBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
