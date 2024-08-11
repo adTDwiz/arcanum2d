@@ -22,6 +22,7 @@
 
 #include "EventHandler.h"
 #include "GUIBox.h"
+#include "TransitionTimer.h"
 
 
 using json = nlohmann::json;
@@ -925,20 +926,46 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                 break;
             }
             case GameModeState::Setting_Menu: {
+                static TransitionTimer fadeTimer;
+                static bool fadeStarted = false;
+                static bool fadeComplete = false; // Track if fade is complete
+
+                // Initialize the fade-in effect
+                if (!fadeStarted && !fadeComplete) {
+                    fadeTimer.start(2.0f); // 2 seconds for the fade-in effect
+                    fadeStarted = true;
+                }
+
                 // Render the background texture
                 SDL_RenderCopy(renderer, textures["optionMenuBG"], nullptr, nullptr);
 
-                //the frame for stats
-                SDL_Rect frameUI = { (screenWidth - 1456) / 2, (screenHeight - 816) / 2, 1456, 816 };
-
-
-                SDL_RenderCopy(renderer, textures["settingsFrameUI"], nullptr, &frameUI);
-
-                // Test
-                GUIBox box(renderer, 100, 100, 200, 150, {255, 0, 0, 0}, 1.0f, ElementType::SOLID_SHAPE);
+                // This is the transparent backing
+                GUIBox box(renderer, 100, 100, 200, 150, { 255, 0, 0, 0 }, 1.0f, ElementType::SOLID_SHAPE);
                 box.render();
 
-                break;
+                // Frame for stats
+                SDL_Rect frameUI = { (screenWidth - (int)(screenWidth * 0.8f)) / 2, (screenHeight - (int)(screenHeight * 0.8f)) / 2, (int)(screenWidth * 0.8f), (int)(screenHeight * 0.8f) };
+                SDL_RenderCopy(renderer, textures["settingsFrameUI"], nullptr, &frameUI);
+
+                // Calculate fade value and render black square
+                float fadeValue = fadeTimer.getValue();
+
+                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); // Ensure blending is enabled
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, static_cast<Uint8>(255 * (1.0f - fadeValue)));
+                SDL_Rect fadeRect = { 0, 0, screenWidth, screenHeight };
+                SDL_RenderFillRect(renderer, &fadeRect);
+
+                // Update the fade timer
+                fadeTimer.update();
+
+                // Check if fade is complete and handle state
+                if (fadeValue >= 1.0f) {
+                    fadeStarted = false;
+                    fadeComplete = true; // Mark fade as complete
+
+                    // Optionally reset the timer (if it has a reset() method)
+                    fadeTimer.reset();
+                }
             }
         }
 

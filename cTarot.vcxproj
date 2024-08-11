@@ -146,6 +146,7 @@
     <ClCompile Include="cTarot.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="GUIBox.cpp" />
+    <ClCompile Include="TransitionTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
