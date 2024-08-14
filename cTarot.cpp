@@ -38,8 +38,17 @@ enum class GameModeState {
     Setting_Menu,
 };
 
+enum class FadeState {
+    FadeIn,
+    FadeOut,
+    Standby,
+};
+
 //This will keep track of what game state we are in. It should be global.
 GameModeState currentGameState = GameModeState::Start_Menu;
+
+// This is for screen transitions.
+FadeState currentFadeState = FadeState::FadeIn;
 
 //This updates our game state. Called whenever screens change
 void updateGameState(GameModeState newState) {
@@ -719,6 +728,61 @@ void renderHoverBoxWithText(SDL_Renderer* renderer, int mouseX, int mouseY, int 
     SDL_DestroyTexture(hoverBoxTextTexture);
 }
 
+void ScreenFade(SDL_Renderer* renderer, int screenWidth, int screenHeight) {
+    static float startOpacity = 1.0f; // Initial opacity value
+    static float targetOpacity = 0.0f; // Target opacity value
+    static float fadeDuration = 3.0f;  // Duration of the fade effect in seconds
+    static float elapsedTime = 0.0f;   // Time elapsed in seconds
+    static float opacity = 1.0f;       // Current opacity value
+
+    Uint32 currentFrameTime = SDL_GetTicks(); // Get the current time in milliseconds
+    static Uint32 lastFrameTime = 0;          // Initialize lastFrameTime statically
+
+    // Calculate deltaTime (the time between frames in seconds)
+    float deltaTime = (currentFrameTime - lastFrameTime) / 1000.0f;
+    lastFrameTime = currentFrameTime; // Update lastFrameTime for the next frame
+
+    // Update elapsedTime based on the fade state
+    if (currentFadeState == FadeState::FadeIn || currentFadeState == FadeState::FadeOut) {
+        elapsedTime += deltaTime;
+
+        // Calculate the normalized time factor (0 to 1)
+        float t = elapsedTime / fadeDuration;
+        t = t > 1.0f ? 1.0f : t; // Clamp t to 1.0f if it exceeds
+
+        // Easing function for cubic ease-in
+        float easedT = t * t * t;
+
+        // Lerp opacity value using the eased factor
+        opacity = startOpacity + (targetOpacity - startOpacity) * easedT;
+
+        // Transition to Standby when fade effect is complete
+        if (t >= 1.0f) {
+            opacity = targetOpacity;
+            currentFadeState = FadeState::Standby;
+            elapsedTime = 0.0f; // Reset elapsedTime for future fades
+        }
+    }
+
+    // Update startOpacity and targetOpacity based on fade state
+    if (currentFadeState == FadeState::FadeIn) {
+        startOpacity = 1.0f; // Starting at fully opaque
+        targetOpacity = 0.0f; // Ending at fully transparent
+    }
+    else if (currentFadeState == FadeState::FadeOut) {
+        startOpacity = 0.0f; // Starting at fully transparent
+        targetOpacity = 1.0f; // Ending at fully opaque
+    }
+
+    // Ensure alpha blending is enabled
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+    // Render the fading box with screen size
+    GUIBox fadeBox(renderer, 0, 0, screenWidth, screenHeight,
+        { 0, 0, 0, static_cast<Uint8>(opacity * 255) },
+        opacity, ElementType::SOLID_SHAPE);
+    fadeBox.render();
+}
 
 
 //This is the main loop
@@ -764,6 +828,7 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                         if (e.type == SDL_MOUSEBUTTONDOWN) {
                             // Mouse clicked in area1
                             std::cout << "Mouse clicked in area 1" << std::endl;
+                            currentFadeState = FadeState::FadeIn;
                             currentGameState = GameModeState::Play_Mode;
                         }
                     }
@@ -799,6 +864,8 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                             // Mouse clicked in area4
                             std::cout << "Mouse clicked in area 4" << std::endl;
                             currentGameState = GameModeState::Setting_Menu;
+                            // Change FadeState to FadeIn when entering the Setting_Menu
+                            currentFadeState = FadeState::FadeIn;
                         }
                     }
                 }
@@ -844,13 +911,15 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
 
                 SDL_DestroyTexture(textTexture);
 
+                ScreenFade(renderer, screenWidth, screenHeight);
+
                 break;
             }
             case GameModeState::Main_Menu: {
                 // Render the background texture
                 SDL_RenderCopy(renderer, textures["mainMenuBG"], nullptr, nullptr);
 
-                
+                ScreenFade(renderer, screenWidth, screenHeight);
 
                 // Render text
                 int textWidth = screenWidth / 6.3;
@@ -926,15 +995,8 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                 break;
             }
             case GameModeState::Setting_Menu: {
-                static TransitionTimer fadeTimer;
-                static bool fadeStarted = false;
-                static bool fadeComplete = false; // Track if fade is complete
 
-                // Initialize the fade-in effect
-                if (!fadeStarted && !fadeComplete) {
-                    fadeTimer.start(2.0f); // 2 seconds for the fade-in effect
-                    fadeStarted = true;
-                }
+
 
                 // Render the background texture
                 SDL_RenderCopy(renderer, textures["optionMenuBG"], nullptr, nullptr);
@@ -947,25 +1009,9 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                 SDL_Rect frameUI = { (screenWidth - (int)(screenWidth * 0.8f)) / 2, (screenHeight - (int)(screenHeight * 0.8f)) / 2, (int)(screenWidth * 0.8f), (int)(screenHeight * 0.8f) };
                 SDL_RenderCopy(renderer, textures["settingsFrameUI"], nullptr, &frameUI);
 
-                // Calculate fade value and render black square
-                float fadeValue = fadeTimer.getValue();
-
-                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); // Ensure blending is enabled
-                SDL_SetRenderDrawColor(renderer, 0, 0, 0, static_cast<Uint8>(255 * (1.0f - fadeValue)));
-                SDL_Rect fadeRect = { 0, 0, screenWidth, screenHeight };
-                SDL_RenderFillRect(renderer, &fadeRect);
-
-                // Update the fade timer
-                fadeTimer.update();
-
-                // Check if fade is complete and handle state
-                if (fadeValue >= 1.0f) {
-                    fadeStarted = false;
-                    fadeComplete = true; // Mark fade as complete
-
-                    // Optionally reset the timer (if it has a reset() method)
-                    fadeTimer.reset();
-                }
+                
+                ScreenFade(renderer, screenWidth, screenHeight);
+               
             }
         }
 
@@ -973,6 +1019,7 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
         SDL_RenderPresent(renderer);
     }
 }
+
 
 
 //This is the data for the Ollama Listener
