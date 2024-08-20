@@ -20,10 +20,10 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
+#include "cTarot.h"
 #include "EventHandler.h"
 #include "GUIBox.h"
-#include "TransitionTimer.h"
-
+#include "gameObjects.h"
 
 using json = nlohmann::json;
 using string = std::string;
@@ -728,19 +728,30 @@ void renderHoverBoxWithText(SDL_Renderer* renderer, int mouseX, int mouseY, int 
     SDL_DestroyTexture(hoverBoxTextTexture);
 }
 
+
 void ScreenFade(SDL_Renderer* renderer, int screenWidth, int screenHeight) {
-    static float startOpacity = 1.0f; // Initial opacity value
-    static float targetOpacity = 0.0f; // Target opacity value
-    static float fadeDuration = 3.0f;  // Duration of the fade effect in seconds
-    static float elapsedTime = 0.0f;   // Time elapsed in seconds
-    static float opacity = 1.0f;       // Current opacity value
+    static float startOpacity = 1.0f;    // Initial opacity value
+    static float targetOpacity = 0.0f;   // Target opacity value
+    static float fadeDuration = 1.0f;    // Duration of the fade effect in seconds
+    static float elapsedTime = 0.0f;     // Time elapsed in seconds
+    static float opacity = 1.0f;         // Current opacity value
+    static Uint32 lastFrameTime = 0;     // Initialize lastFrameTime statically
+    static GameModeState previousGameState = GameModeState::Start_Menu; // Track previous state
 
     Uint32 currentFrameTime = SDL_GetTicks(); // Get the current time in milliseconds
-    static Uint32 lastFrameTime = 0;          // Initialize lastFrameTime statically
 
     // Calculate deltaTime (the time between frames in seconds)
     float deltaTime = (currentFrameTime - lastFrameTime) / 1000.0f;
     lastFrameTime = currentFrameTime; // Update lastFrameTime for the next frame
+
+    // Trigger fade when transitioning into Main_Menu
+    if (currentGameState == GameModeState::Main_Menu && previousGameState != GameModeState::Main_Menu) {
+        currentFadeState = FadeState::FadeIn; // Start the fade-in effect
+        startOpacity = 1.0f;    // Start fully opaque
+        targetOpacity = 0.0f;   // Target fully transparent
+        elapsedTime = 0.0f;     // Reset elapsed time
+        opacity = 1.0f;         // Reset current opacity
+    }
 
     // Update elapsedTime based on the fade state
     if (currentFadeState == FadeState::FadeIn || currentFadeState == FadeState::FadeOut) {
@@ -764,16 +775,6 @@ void ScreenFade(SDL_Renderer* renderer, int screenWidth, int screenHeight) {
         }
     }
 
-    // Update startOpacity and targetOpacity based on fade state
-    if (currentFadeState == FadeState::FadeIn) {
-        startOpacity = 1.0f; // Starting at fully opaque
-        targetOpacity = 0.0f; // Ending at fully transparent
-    }
-    else if (currentFadeState == FadeState::FadeOut) {
-        startOpacity = 0.0f; // Starting at fully transparent
-        targetOpacity = 1.0f; // Ending at fully opaque
-    }
-
     // Ensure alpha blending is enabled
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
@@ -782,11 +783,14 @@ void ScreenFade(SDL_Renderer* renderer, int screenWidth, int screenHeight) {
         { 0, 0, 0, static_cast<Uint8>(opacity * 255) },
         opacity, ElementType::SOLID_SHAPE);
     fadeBox.render();
+
+    // Update the previous game state
+    previousGameState = currentGameState;
 }
 
 
 //This is the main loop
-void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string, SDL_Texture*>& textures, std::map<std::string, TTF_Font*>& fonts, int screenWidth, int screenHeight) {
+void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string, SDL_Texture*>& textures, std::map<std::string, TTF_Font*>& fonts, int screenWidth, int screenHeight, GameObjectsStruct& gameObjects) {
     bool quit = false;
     SDL_Event e;
 
@@ -863,6 +867,9 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                         if (e.type == SDL_MOUSEBUTTONDOWN) {
                             // Mouse clicked in area4
                             std::cout << "Mouse clicked in area 4" << std::endl;
+
+                            
+
                             currentGameState = GameModeState::Setting_Menu;
                             // Change FadeState to FadeIn when entering the Setting_Menu
                             currentFadeState = FadeState::FadeIn;
@@ -919,7 +926,7 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                 // Render the background texture
                 SDL_RenderCopy(renderer, textures["mainMenuBG"], nullptr, nullptr);
 
-                ScreenFade(renderer, screenWidth, screenHeight);
+                
 
                 // Render text
                 int textWidth = screenWidth / 6.3;
@@ -974,6 +981,7 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
                     renderHoverBoxWithText(renderer, mouseX - (screenWidth / 5) - (screenWidth / 70), mouseY - (screenHeight / 14) - (screenHeight / 40), screenWidth / 11, screenHeight / 14, "Settings and records", fonts["kappa20"], 1, { 210, 32, 250, 255 }, { 32, 210, 250, 255 }, textColor);
                 }
 
+                ScreenFade(renderer, screenWidth, screenHeight);
                 SDL_DestroyTexture(textTexture);
 
                 break;
@@ -996,22 +1004,28 @@ void renderLoop(SDL_Window* window, SDL_Renderer* renderer, std::map<std::string
             }
             case GameModeState::Setting_Menu: {
 
-
-
                 // Render the background texture
                 SDL_RenderCopy(renderer, textures["optionMenuBG"], nullptr, nullptr);
 
                 // This is the transparent backing
-                GUIBox box(renderer, 100, 100, 200, 150, { 255, 0, 0, 0 }, 1.0f, ElementType::SOLID_SHAPE);
-                box.render();
+                gameObjects.settingsBackgroundTransparentBox.render();
 
                 // Frame for stats
                 SDL_Rect frameUI = { (screenWidth - (int)(screenWidth * 0.8f)) / 2, (screenHeight - (int)(screenHeight * 0.8f)) / 2, (int)(screenWidth * 0.8f), (int)(screenHeight * 0.8f) };
                 SDL_RenderCopy(renderer, textures["settingsFrameUI"], nullptr, &frameUI);
 
+                //Sidebar Icons
                 
                 ScreenFade(renderer, screenWidth, screenHeight);
-               
+
+                //These are our settings buttons for the wheel
+                std::vector<std::string> settings = {
+                "Archives",
+                "Records",
+                "Audio_Settings",
+                "Video_Settings",
+                "Credits"
+                };
             }
         }
 
@@ -1112,7 +1126,8 @@ int main(int argc, char* argv[]) {
     // Creating event handler, and turning the main loop on
     EventHandler eventHandler;
 
-    
+    //This will create all of our potential gameObjects
+    GameObjectsStruct gameObjects(renderer);
 
     std::map<std::string, SDL_Texture*> textures;
     std::map<std::string, std::string> texturePaths = {
@@ -1144,7 +1159,7 @@ int main(int argc, char* argv[]) {
 
     loadFonts(fontPaths, fonts);
 
-    renderLoop(window, renderer, textures, fonts, screenWidth, screenHeight);
+    renderLoop(window, renderer, textures, fonts, screenWidth, screenHeight, gameObjects);
 
     shutdown(window, renderer, fonts, ollamaThread, ollamaData);
     return 0;

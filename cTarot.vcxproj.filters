@@ -24,7 +24,10 @@
     <ClCompile Include="GUIBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransitionTimer.cpp">
+    <ClCompile Include="iconSettingWheel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObjects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,7 +41,13 @@
     <ClInclude Include="GUIBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransitionTimer.h">
+    <ClInclude Include="iconSettingWheel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameObjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cTarot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

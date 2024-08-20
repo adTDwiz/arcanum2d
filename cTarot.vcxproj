@@ -145,14 +145,17 @@
   <ItemGroup>
     <ClCompile Include="cTarot.cpp" />
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="gameObjects.cpp" />
     <ClCompile Include="GUIBox.cpp" />
-    <ClCompile Include="TransitionTimer.cpp" />
+    <ClCompile Include="iconSettingWheel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="cTarot.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="gameObjects.h" />
     <ClInclude Include="GUIBox.h" />
-    <ClInclude Include="TransitionTimer.h" />
+    <ClInclude Include="iconSettingWheel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

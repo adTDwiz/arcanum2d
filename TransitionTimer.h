@@ -1,8 +1,0 @@
-#ifndef TRANSITIONTIMER_H
-#define TRANSITIONTIMER_H
-
-#include <SDL.h>
-
-
-
-#endif // TRANSITIONTIMER_H
